@@ -1,47 +1,100 @@
-programa
-{
-	funcao inicio ()
-	{
-		real n1, n2, n3, n4, media_desejada, media
-		cadeia aluno
-		caracter resposta1, resposta2
-		
-		escreva ("A sua escola avalia o aluno com base em sua média anual?(s/n)")
-		leia (resposta1)
-		escreva ("Durante o ano, foram realizadas exatamente 4 avaliações?(s/n)")
-		leia (resposta2)
-		
-	se(resposta1== 's' e resposta2 == 's'){
-			
-		
-		escreva	("Qual a nota média imposta pela sua escola?")
-		leia (media_desejada)
-		escreva ("Digite seu nome:")
-		leia (aluno)
-		escreva ("Digite sua primeira nota:")
-		leia (n1)
-		escreva ("Digite sua segunda nota:")
-		leia (n2)
-		escreva ("Digite sua terceira nota:")
-		leia (n3)
-		escreva ("Digite sua quarta nota:")
-		leia (n4)
-		
-		media = (n1 + n2 + n3 + n4)/4
-		
-			se(media>=media_desejada){
-				escreva(aluno + ", sua média foi de " + media + " pontos.")
-				escreva("Parabéns, você foi aprovado!")
-		
-			}senao{
-				escreva(aluno + ", sua média foi de " + media + " pontos.")
-				escreva("Boa sorte na recuperação!")
-		}
-		
-	}senao{
-			escreva ("Desculpe, não podemos te ajudar no momento.")
-			escreva ("Estamos sempre trabalhando para aprimorar a experiência de nossos usuários.")
-			escreva ("Até logo!")
-		}
-	}
+programa {
+  inclua biblioteca Util
+
+  inteiro cho, idade, sorteio
+  cadeia nome, cpf, estado, data, cpf2, data2 
+  funcao inicio() {
+      escreva("Seja bem-vindo a página do auxílio emergêncial"+"\n")
+      home()
+  funcao home() {
+    escreva("Esreva uma das opções"+"\n")
+    escreva("1-Cadastro"+"\n"+"2-Consultar cadastro"+"\n"+"3-Solicitar exclusão"+"\n")
+    leia(cho)
+    se(cho == 1){
+      cadastro() 
+      home()
+    }
+    senao se(cho == 2){
+       
+      consulta ()
+      home()
+    }
+   senao se(cho == 3){
+      exclusao() 
+      home()
+    }
+    senao {
+      escreva("Essa opção não existe! /n")
+      home()
+    }
+  }
+  funcao cadastro() {
+    limpa()
+    escreva("Digite sua idade"+"\n")
+    leia(idade)
+    se (idade > 17){
+      escreva("Digite seu nome"+"\n")
+      leia(nome)
+      escreva("Digite seu estado"+"\n")
+      leia(estado)
+      escreva("Digite seu cpf"+"\n")
+      leia(cpf)
+      escreve("Digite sua data de nascimento (DD/MM/YYYY):")
+      leia(data)
+      limpa()
+      escreva("Cadastro concluído com sucesso!")
+    }
+   senao{
+        escreva("Cadastro recusado devido idade inferior a 18 anos!"+"\n")
+        nome = ""
+        idade = 00
+        estado = ""
+        data = ""
+        cpf = ""
+   }
+   home()
+  }
+
+  funcao consulta() {
+    escreva("Digite o Estado do cadastro"+"\n")
+    leia(cpf2)
+    escreva("Digite o cpf cadastrado"+"\n")
+    leia(data2)
+
+    se(cpf2 == cpf e data == data2){
+      escreva("Nome:"+nome+"\n")
+      escreva("Idade:"+idade+"\n")
+      escreva("Estado:"+estado+"\n"+"Cpf:"+cpf+"\n")
+      home()  
+      }
+      senao{
+      escreva("Cadastro não encontrado, tente novamente"+"\n")
+       home()  
+        }
+  }
+
+  funcao exclusao() {
+    escreva("Digite o cpf da conta que deseja excluir:"+"\n")
+    leia(cpf3)
+    escreva("Digite o estado cadastrado na sua conta"+"\n")
+    leia(estado3)
+    se (cpf3 == cpf){
+      escreva("Para excluir sua conta, resolva a seguinte operação:"+"\n"+"1+1=")
+      leia(capa)
+      se(capa==2){
+        cpf = 0
+        nome = ""
+        estado = ""
+        idade = ""
+        escreva("Sua conta foi excluída com êxito, passar bem :v"+"\n")
+        senao{
+          escreva("Você provavelmente não é um robô, mas tente novamente depois de estudar um pouco :)"+"\n")
+        }
+      }
+      senao{
+        escreva("Não foi possível encontrar sua conta, tente novamente."+"\n")
+      }
+    }
+
+  }
 }

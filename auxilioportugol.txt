@@ -1,0 +1,135 @@
+programa {
+	
+  inclua biblioteca Util
+
+  inteiro cho, idade, sorteio, confirma
+  cadeia nome, cpf, estado, data, cpf2, data2
+  
+  funcao inicio() {
+      escreva("Seja bem-vindo a página do auxílio emergêncial"+"\n")
+      home()
+  }
+  
+  funcao home() {
+  	escreva("_________________________________________________________________________ \n")
+    escreva("Escreva uma das opções"+"\n")
+    escreva("1-Cadastro"+"\n"+"2-Consultar cadastro"+"\n"+"3-Solicitar exclusão"+"\n")
+    leia(cho)
+	limpa()
+    se(cho == 1){
+      cadastro()
+      home()
+    }
+    senao se(cho == 2){
+       
+      consulta ()
+      home()
+    }
+   senao se(cho == 3){
+      exclusao()
+      home()
+    }
+    senao {
+      escreva("Essa opção não existe! \n")
+      home()
+    }
+  }
+  funcao cadastro() {
+    escreva("Digite sua idade:"+"\n")
+    leia(idade)
+    se (idade > 17){
+      escreva("Digite seu nome:"+"\n")
+      leia(nome)
+      escreva("Digite seu estado:"+"\n")
+      leia(estado)
+      escreva("Digite seu CPF (XXX.XXX.XXX-XX):"+"\n")
+      leia(cpf)
+      escreva("Digite sua data de nascimento (DD/MM/YYYY):")
+      leia(data)
+      limpa()
+      escreva("Cadastro concluído com sucesso! \n")
+    }
+   senao{
+        escreva("Cadastro recusado devido idade inferior a 18 anos!"+"\n")
+        nome = ""
+        idade = 00
+        estado = ""
+        data = ""
+        cpf = ""
+   }
+   home()
+  }
+ 
+
+  funcao consulta() {
+    escreva("Digite o seu CPF(XXX.XXX.XXX-XX)"+"\n")
+    leia(cpf2)
+    escreva("Digite sua data de nascimento (DD/MM/YYYY):"+"\n")
+    leia(data2)
+	limpa()
+
+    se(cpf2 == cpf e data == data2){
+      escreva("Nome:"+nome+"\n")
+      escreva("Idade:"+idade+"\n")
+      escreva("Estado:"+estado+"\n"+"Cpf:"+cpf+"\n")
+	  escreva("Data de nascimento:"+data+"\n")
+     
+      home()  
+    }
+    senao{
+      escreva("Cadastro não encontrado."+"\n")
+      home()  
+    }
+  }
+
+  funcao exclusao() {
+    escreva("Digite o seu CPF (XXX.XXX.XXX-XX):"+"\n")
+    leia(cpf2)
+    escreva("Digite sua data de nascimento (DD/MM/YYYY):"+"\n")
+    leia(data2)
+	limpa()
+    se (data2 == data e cpf2 == cpf){
+      escreva("Para excluir sua conta, resolva a seguinte operação:"+"\n"+"1+1=")
+      leia(confirma)
+	  limpa()
+      se(confirma==2){
+        
+		escreva ("Aguarde, sua solicitação")
+		escreva("\n está sendo analisada.")
+		Util.aguarde(1000)
+		limpa()
+		escreva ("Aguarde, sua solicitação")
+		escreva("\n está sendo analisada..")
+		Util.aguarde(1000)
+		limpa()
+		escreva ("Aguarde, sua solicitação")
+		escreva("\n  está sendo analisada...")
+		Util.aguarde(1000)
+		limpa()
+		escreva ("...")
+		Util.aguarde(1000)
+		limpa()
+		
+		sorteio = Util.sorteia(0,1)
+		se (sorteio == 0) {
+	    	escreva("Sua conta foi excluída com sucesso!"+"\n")
+			cpf = ""
+    		 nome = ""
+        	 estado = ""
+    		 idade = 00
+			data = ""
+		}
+	    senao{
+          escreva("Solicitação negada."+"\n")
+       }
+	  }
+     senao{
+        escreva("Solicitação negada."+"\n")
+      }
+    }
+	senao {
+		escreva("Dados incorretos! \n")
+		home()
+	}
+  }
+}
